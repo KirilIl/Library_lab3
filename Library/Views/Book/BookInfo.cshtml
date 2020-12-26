@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "BookInfo";
+}
+
+<h1>BookInfo</h1>
+
+<p>Book: @Model.Name</p>
+<p>Author: @Model.AuthorName</p>
+<p>DownLoads: @Model.DownloadedTimes</p>
+@if (Model.Types == (Library.Data.Entities.FileAggregate.FileType.PDF | Library.Data.Entities.FileAggregate.FileType.WORD))
+{
+    <a asp-area="" asp-controller="Book" asp-route-authorname="@Model.AuthorName" asp-route-name="@Model.Name" asp-route-filetype="1" asp-action="Download">Download pdf</a>
+}
+@if (Model.Types == (Library.Data.Entities.FileAggregate.FileType.PDF | Library.Data.Entities.FileAggregate.FileType.WORD))
+{
+    <a asp-area="" asp-controller="Book" asp-route-authorname="@Model.AuthorName" asp-route-name="@Model.Name" asp-route-filetype="2" asp-action="Download">Download docx</a>
+}

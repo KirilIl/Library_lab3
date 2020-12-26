@@ -11,21 +11,44 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Library</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Boot Library</a>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="A" asp-action="GetBooks">A</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="B" asp-action="GetBooks">B</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="C" asp-action="GetBooks">C</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="D" asp-action="GetBooks">D</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="E" asp-action="GetBooks">E</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="F" asp-action="GetBooks">F</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="G" asp-action="GetBooks">G</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="H" asp-action="GetBooks">H</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="I" asp-action="GetBooks">I</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="J" asp-action="GetBooks">J</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="K" asp-action="GetBooks">K</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="L" asp-action="GetBooks">L</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="M" asp-action="GetBooks">M</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="N" asp-action="GetBooks">N</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="O" asp-action="GetBooks">O</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="P" asp-action="GetBooks">P</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="Q" asp-action="GetBooks">Q</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="R" asp-action="GetBooks">R</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="S" asp-action="GetBooks">S</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="T" asp-action="GetBooks">T</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="U" asp-action="GetBooks">U</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="V" asp-action="GetBooks">V</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="W" asp-action="GetBooks">W</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="X" asp-action="GetBooks">X</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="Y" asp-action="GetBooks">Y</a>
+                            <a class="text-dark" asp-area="" asp-controller="Book" asp-route-letter="Z" asp-action="GetBooks">Z</a>
                         </li>
                     </ul>
                 </div>
+                <a class="navbar-brand" asp-area="" asp-controller="Book" asp-route-quote="@ViewData["Quote"]" asp-action="GetBookByQuote">@ViewData["Quote"]</a>
+                <form asp-action="GetBooksByNameOrAuthor" asp-controller="Book">
+                    <input type="text" name="name" id="name" placeholder="Search by book name, author name..." />
+                    <input type="submit" />
+                </form>
             </div>
         </nav>
     </header>

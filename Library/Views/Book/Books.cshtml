@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Books</h1>
+@foreach (var book in Model)
+{
+    <a asp-area="" asp-controller="Book" asp-route-name="@book.Name"  asp-route-authorid="@book.AuthorId" asp-action="GetBook">@book.Name</a>
+}

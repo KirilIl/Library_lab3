@@ -1,33 +1,25 @@
-﻿using Library.EF;
+﻿using Library.Domain.Interfaces;
+using Library.EF;
 using Library.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Library.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly LibraryContext _context;
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(LibraryContext context, ILogger<HomeController> logger)
+        private readonly IQuoteService _quoteService;
+        private readonly IBookService _bookService;
+        public HomeController(IQuoteService quoteService, IBookService bookService)
         {
-            _context = context;
-            _logger = logger;
+            _quoteService = quoteService;
+            _bookService = bookService;
         }
 
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
+             ViewData["Quote"] = _quoteService.GetRandomQuote().QuoteString;
             return View();
         }
 
