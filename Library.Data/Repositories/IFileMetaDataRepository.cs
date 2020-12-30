@@ -9,6 +9,6 @@ namespace Library.Data.Repositories
 {
    public interface IFileMetaDataRepository
     {
-        FileType GetFileType(int bookId);
+       IEnumerable<FileType> GetFileTypes(int bookId);
     }
 }

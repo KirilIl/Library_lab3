@@ -11,5 +11,5 @@ namespace Library.Data.DTO
            (string Name,
             string AuthorName,
             long DownloadedTimes,
-            FileType Types);
+            IEnumerable<FileType> Types);
 }

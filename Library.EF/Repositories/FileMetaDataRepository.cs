@@ -17,22 +17,12 @@ namespace Library.EF.Repositories
             _context = context;
         }
 
-        public FileType GetFileType(int bookId)
+        public IEnumerable<FileType> GetFileTypes(int bookId)
         {
-            var type = FileType.None;
             foreach (var file in _context.FilesMetaData.Where(x => x.BookId == bookId))
             {
-                switch (file.Type)
-                {
-                    case FileType.PDF:
-                        type = type | FileType.PDF;
-                        break;
-                    case FileType.WORD:
-                        type = type | FileType.WORD;
-                        break;
-                }
+                yield return file.Type;
             }
-            return type;
         }
 
         public bool IsFileExists(string name, FileType fileType)

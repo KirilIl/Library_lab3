@@ -4,14 +4,12 @@ using Library.Domain.DefaultImplementations;
 using Library.Domain.Interfaces;
 using Library.EF;
 using Library.EF.Repositories;
-using Library.Mapping;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
 
 namespace Library
 {
@@ -25,13 +23,6 @@ namespace Library
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-            var mapperConfig = new MapperConfiguration(mc =>
-            {
-                mc.AddProfile(new MappingProfile());
-            });
-            IMapper mapper = mapperConfig.CreateMapper();
-
-            services.AddSingleton(mapper);
             services.AddMvcCore(); 
             services.AddControllersWithViews();
             services.AddTransient<IBookService>(x =>

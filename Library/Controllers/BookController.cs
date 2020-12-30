@@ -11,12 +11,10 @@ namespace Library.Controllers
     {
         private readonly IBookService _bookService;
         private readonly IAuthorRepository _authorRepository;
-        private readonly IMapper _mapper;
-        public BookController(IBookService bookService, IAuthorRepository authorRepository, IMapper mapper)
+        public BookController(IBookService bookService, IAuthorRepository authorRepository)
         {
             _bookService = bookService;
             _authorRepository = authorRepository;
-            _mapper = mapper;
         }
 
         public IActionResult GetBooks(char letter)
@@ -39,13 +37,13 @@ namespace Library.Controllers
         public IActionResult GetBook(string name, int authorid)
         {
             var book = _bookService.GetBook(name, authorid);
-            return View("BookInfo", _mapper.Map<BookInfoViewModel>(_bookService.GetBookInfo(book)));
+            return View("BookInfo", _bookService.GetBookInfo(book));
         }
 
         public IActionResult GetBookByQuote(string quote)
         {
             var book = _bookService.GetBookByQuote(quote);
-            return View("BookInfo", _mapper.Map<BookInfoViewModel>(_bookService.GetBookInfo(book)));
+            return View("BookInfo", _bookService.GetBookInfo(book));
         }
 
         public IActionResult Download(string name, string authorname, FileType fileType)
@@ -57,7 +55,16 @@ namespace Library.Controllers
             {
                 return View("FileNotFound");
             }
-            return file;
+            var mimeType = string.Empty;
+            if (fileType == FileType.PDF)
+            {
+                   mimeType = "application/pdf";
+            }
+            else if (fileType == FileType.WORD)
+            {
+                    mimeType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+            }
+            return new FileStreamResult(file, mimeType);
         }
     }
 }
